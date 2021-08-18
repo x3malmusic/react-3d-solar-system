@@ -1,15 +1,17 @@
 import React, { useRef } from "react";
 import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { rotateAroundAxis, selfRotate } from "../../utils/physX";
+import Satellite from "../Satellite/Satellite";
 
-const Sphere = ({ name, size, texture, rotationSpeed, position, moveSpeed }) => {
+const Planet = ({ name, size, texture, rotationSpeed, position, moveSpeed, satellites = [] }) => {
   const axisRef = useRef();
   const planetRef = useRef();
   const textureMap = useTexture(texture)
 
   useFrame((a,s) => {
-    axisRef.current.rotateY(moveSpeed);
-    planetRef.current.rotateY(rotationSpeed);
+    rotateAroundAxis(axisRef.current, moveSpeed)
+    selfRotate(planetRef.current, rotationSpeed)
   })
 
   return(
@@ -17,9 +19,10 @@ const Sphere = ({ name, size, texture, rotationSpeed, position, moveSpeed }) => 
       <mesh position={position} ref={planetRef}>
         <meshStandardMaterial attach="material" map={textureMap} />
         <sphereGeometry args={[size, 64]} attach="geometry" />
+        {satellites.map(sat => <Satellite {...sat} planetRef={planetRef} key={sat.name} />)}
       </mesh>
     </group>
   )
 }
 
-export default Sphere;
+export default Planet;
