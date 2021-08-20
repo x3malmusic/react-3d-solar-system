@@ -10,7 +10,6 @@ import NeptuneImg from "../assets/textures/neptune.jpg"
 import PlutoImg from "../assets/textures/pluto.jpg"
 
 import MoonImg from '../assets/textures/moon.jpg'
-import SaturnRingsImg from '../assets/textures/saturn_ring.png'
 
 export const sun = {
   name: "Sun",
