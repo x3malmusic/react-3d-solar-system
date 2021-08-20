@@ -15,16 +15,16 @@ function App() {
       <Canvas
         style={{ backgroundColor: "black" }}
         gl={{ antialias: true, logarithmicDepthBuffer: true, _pixelRatio: window.devicePixelRatio }}
-        camera={{ fov: 25, position: [0, 50, 150], far: 1e8, near: 1 }}
+        camera={{ fov: 25, position: [0, 50, 150], far: 1e8, near: 1, aspectRatio: window.innerWidth / window.innerHeight }}
       >
         <OrbitControls target-x={0} maxDistance={800} />
         <pointLight position={[0, 0, 0]} />
         <ambientLight intensity={0.1} />
         <Suspense fallback={null}>
           <Star {...sun} />
-          {/*<Background />*/}
+          <Background />
         </Suspense>
-        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
+        {/*<Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />*/}
         {solarSystem.map(obj => (
           <Suspense fallback={null} key={obj.name}>
             <Planet {...obj} />
