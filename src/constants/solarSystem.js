@@ -79,7 +79,7 @@ export const solarSystem = [
     rings: {
       outerR: 13,
       innerR: 5,
-      texture: SaturnRingsImg
+      color: 0x757064
     }
   },
   {
