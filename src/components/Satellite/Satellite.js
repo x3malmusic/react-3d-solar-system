@@ -13,12 +13,10 @@ const Planet = ({ name, size, texture, rotationSpeed, position, moveSpeed, plane
   })
 
   return(
-    <group ref={planetRef}>
-      <mesh position={position} ref={satRef}>
-        <meshStandardMaterial attach="material" map={textureMap} />
-        <sphereGeometry args={[size, 64]} attach="geometry" />
-      </mesh>
-    </group>
+    <mesh position={position} ref={satRef}>
+      <meshStandardMaterial attach="material" map={textureMap} />
+      <sphereGeometry args={[size, 64]} attach="geometry" />
+    </mesh>
   )
 }
 

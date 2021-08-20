@@ -10,6 +10,7 @@ import NeptuneImg from "../assets/textures/neptune.jpg"
 import PlutoImg from "../assets/textures/pluto.jpg"
 
 import MoonImg from '../assets/textures/moon.jpg'
+import SaturnRingsImg from '../assets/textures/saturn_ring.png'
 
 export const sun = {
   name: "Sun",
@@ -33,7 +34,7 @@ export const solarSystem = [
     size: 1,
     texture: VenusImg,
     rotationSpeed: 0.0002,
-    position: [30, 0, 0],
+    position: [0, 0, 30],
     moveSpeed: 0.0005,
   },
   {
@@ -57,7 +58,7 @@ export const solarSystem = [
     size: 0.8,
     texture: MarsImg,
     rotationSpeed: 0.0002,
-    position: [55, 0, 0],
+    position: [0, 0, 55],
     moveSpeed: 0.00009,
   },
   {
@@ -65,7 +66,7 @@ export const solarSystem = [
     size: 10,
     texture: JupiterImg,
     rotationSpeed: 0.0002,
-    position: [75, 0, 0],
+    position: [0, 0, 75],
     moveSpeed: 0.00002,
   },
   {
@@ -73,15 +74,20 @@ export const solarSystem = [
     size: 9,
     texture: SaturnImg,
     rotationSpeed: 0.0002,
-    position: [100, 0, 0],
+    position: [0, 0, -100],
     moveSpeed: 0.000008,
+    rings: {
+      outerR: 13,
+      innerR: 5,
+      texture: SaturnRingsImg
+    }
   },
   {
     name: "Uranus",
     size: 5,
     texture: UranusImg,
     rotationSpeed: 0.0002,
-    position: [120, 0, 0],
+    position: [0, 0, 120],
     moveSpeed: 0.000001,
   },
   {
@@ -97,7 +103,7 @@ export const solarSystem = [
     size: 0.3,
     texture: PlutoImg,
     rotationSpeed: 0.0002,
-    position: [155, 0, 0],
+    position: [0, 0, 155],
     moveSpeed: 0.00000001,
   },
 ]
