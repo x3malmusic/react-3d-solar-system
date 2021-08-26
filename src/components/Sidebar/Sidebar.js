@@ -20,7 +20,7 @@ const Sidebar = () => {
     >
       {chosenPlanetInfo &&
       <Paper className={classes.paper}>
-        <Typography variant="subtitle2">Distance from the Sun: {chosenPlanetInfo.distance} AU</Typography>
+        {chosenPlanetInfo.distance && <Typography variant="subtitle2">Distance from the Sun: {chosenPlanetInfo.distance} AU</Typography>}
         <Typography variant="subtitle2" gutterBottom>Length Of Year: {chosenPlanetInfo.year}</Typography>
         <Typography>{chosenPlanetInfo.desc}</Typography>
       </Paper>

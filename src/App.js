@@ -2,11 +2,9 @@ import React, { Suspense, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars, useContextBridge } from "@react-three/drei";
 
-import Planet from "./components/Planet/Planet";
-import Star from "./components/Star/Star";
 import OrbitRing from "./components/Ring/Ring";
 import Background from "./components/BackGround/Background";
-import { solarSystem, sun } from "./constants/solarSystem";
+import { solarSystem } from "./constants/solarSystem";
 import { Context } from "./context";
 import Sidebar from "./components/Sidebar/Sidebar";
 
@@ -27,13 +25,12 @@ function App() {
           <pointLight position={[0, 0, 0]} />
           <ambientLight intensity={0.1} />
           <Suspense fallback={null}>
-            <Star {...sun} />
             <Background />
           </Suspense>
-          {/*<Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />*/}
-          {solarSystem.map(obj => (
+          <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
+          {solarSystem.map(({ Component, ...obj }) => (
             <Suspense fallback={null} key={obj.name}>
-              <Planet {...obj} cameraRef={cameraRef} />
+              <Component cameraRef={cameraRef} {...obj} />
               <OrbitRing distanceFromAxis={obj.position} />
             </Suspense>
           ))}

@@ -11,15 +11,20 @@ import PlutoImg from "../assets/textures/pluto.jpg"
 
 import MoonImg from '../assets/textures/moon.jpg'
 
-export const sun = {
-  name: "Sun",
-  size: 20,
-  texture: SunImg,
-  rotationSpeed: 0.00004,
-  position: [0, 0, 0],
-}
+import sphereType from "../components/SphereType/sphereType";
+import Planet from "../components/Planet/Planet";
+import Satellite from "../components/Satellite/Satellite";
+import Star from "../components/Star/Star";
 
 export const solarSystem = [
+  {
+    name: "Sun",
+    size: 20,
+    texture: SunImg,
+    rotationSpeed: 0.00004,
+    position: [0, 0, 0],
+    Component: sphereType(Star)
+  },
   {
     name: "Mercury",
     size: 0.5,
@@ -27,6 +32,7 @@ export const solarSystem = [
     rotationSpeed: 0.0005,
     position: [22, 0, 0],
     moveSpeed: 0.001,
+    Component: sphereType(Planet)
   },
   {
     name: "Venus",
@@ -35,6 +41,7 @@ export const solarSystem = [
     rotationSpeed: 0.0002,
     position: [0, 0, 30],
     moveSpeed: 0.0005,
+    Component: sphereType(Planet)
   },
   {
     name: "Earth",
@@ -43,6 +50,7 @@ export const solarSystem = [
     rotationSpeed: 0.0002,
     position: [50, 0, 0],
     moveSpeed: 0.0001,
+    Component: sphereType(Planet),
     satellites: [{
       name: "Moon",
       size: 0.3,
@@ -50,6 +58,7 @@ export const solarSystem = [
       rotationSpeed: 0.0002,
       position: [2.5, 0, 0],
       moveSpeed: 0.0001,
+      Component: sphereType(Satellite)
     }]
   },
   {
@@ -59,6 +68,7 @@ export const solarSystem = [
     rotationSpeed: 0.0002,
     position: [0, 0, 55],
     moveSpeed: 0.00009,
+    Component: sphereType(Planet)
   },
   {
     name: "Jupiter",
@@ -67,6 +77,7 @@ export const solarSystem = [
     rotationSpeed: 0.0002,
     position: [0, 0, 75],
     moveSpeed: 0.00002,
+    Component: sphereType(Planet)
   },
   {
     name: "Saturn",
@@ -75,6 +86,7 @@ export const solarSystem = [
     rotationSpeed: 0.0002,
     position: [0, 0, -100],
     moveSpeed: 0.000008,
+    Component: sphereType(Planet),
     rings: {
       outerR: 13,
       innerR: 5,
@@ -88,6 +100,7 @@ export const solarSystem = [
     rotationSpeed: 0.0002,
     position: [0, 0, 120],
     moveSpeed: 0.000001,
+    Component: sphereType(Planet)
   },
   {
     name: "Neptune",
@@ -96,6 +109,7 @@ export const solarSystem = [
     rotationSpeed: 0.0002,
     position: [140, 0, 0],
     moveSpeed: 0.0000005,
+    Component: sphereType(Planet)
   },
   {
     name: "Pluto",
@@ -104,10 +118,15 @@ export const solarSystem = [
     rotationSpeed: 0.0002,
     position: [0, 0, 155],
     moveSpeed: 0.00000001,
+    Component: sphereType(Planet)
   },
 ]
 
 export const planetInfo = {
+  'Sun': {
+    desc: "The Sun is a yellow dwarf star, a hot ball of glowing gases at the heart of our solar system. Its gravity holds everything from the biggest planets to tiny debris in its orbit.",
+    year: "230 Million Earth Days"
+  },
   'Mercury': {
     desc: "Mercury—the smallest planet in our solar system and closest to the Sun—is only slightly larger than Earth's Moon. Mercury is the fastest planet, zipping around the Sun every 88 Earth days.",
     distance: 0.4,
@@ -121,7 +140,11 @@ export const planetInfo = {
   "Earth": {
     desc: "Earth—our home planet—is the only place we know of so far that’s inhabited by living things. It's also the only planet in our solar system with liquid water on the surface.",
     distance: 1,
-    year: "365.25 Earth Days"
+    year: "365.25 Earth Days",
+  },
+  "Moon": {
+    desc: "Earth's Moon is the only place beyond Earth where humans have set foot, so far. The Moon makes our planet more livable by moderating how much it wobbles on its axis.",
+    year: "27 Earth Days"
   },
   "Mars": {
     desc: "Mars is a dusty, cold, desert world with a very thin atmosphere. There is strong evidence Mars was—billions of years ago—wetter and warmer, with a thicker atmosphere.",
